@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { auth, db } from '../fire.js';
+import { auth, db } from '../firebase.js';
 
 function Content({ setFriend, friend }) {
     const [messages, setMessages] = useState([]);
-
-
 
     useEffect(() => {
         async function getData() {

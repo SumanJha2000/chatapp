@@ -2,18 +2,23 @@ import React, { useState, useEffect } from 'react'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-import { db, auth } from '../fire';
+import { db, auth } from '../firebase';
 
 
+//Text we send is typed here in the input
 function Text() {
     let sms = [];
+    //again check if localstorage already has some value or not
     sms = JSON.parse(localStorage.getItem('result')) ? [...JSON.parse(localStorage.getItem('result'))] : sms;
 
     const [msg, setMsg] = useState('');
     async function sendMessage(e) {
         e.preventDefault();
         if (msg.length == 0) return;
+        //get current user uid and its photo;
         const { uid, photoURL } = auth.currentUser;
+
+        //store data to firebase storage
         await db.collection('message').add({
             text: msg,
             photoURL,
@@ -30,11 +35,7 @@ function Text() {
             return s;
         })
 
-
-
-
-
-
+        //store the last text inside localstorage
         localStorage.setItem('result', JSON.stringify(sms));
         setMsg('');
     }

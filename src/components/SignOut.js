@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 function SignOut() {
+    //sign out function using firebase auth;
     const signOut = () => {
         firebase.auth().signOut();
     }

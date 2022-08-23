@@ -1,8 +1,8 @@
 import React from 'react'
 import SignOut from './SignOut';
+
+//header represnt name and logout
 function Profile({ friend, name }) {
-
-
     return (
         <div style={{ height: "4rem" }} className="d-flex justify-space-between align-items-center bg-success">
             <h5 className='pr-3 text-white w-75 pl-3'>{name}</h5>

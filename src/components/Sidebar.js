@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 
 function Sidebar() {
     let people = [];
+
+    //check if localstorage already has some data or not
     people = JSON.parse(localStorage.getItem('result')) ? [...JSON.parse(localStorage.getItem('result'))] : people;
     const [search, setSearch] = useState('');
 
 
     let filteredPeople = [];
+    //filter on search  sidebar
     filteredPeople = people.filter(p => {
         return p.displayName.toLowerCase().startsWith(search.toLowerCase());
     })
@@ -20,6 +23,8 @@ function Sidebar() {
             </div>
             <div style={{ paddingTop: "4rem" }} className=''>
                 <ul >
+
+                    {/* show friend according to search result */}
                     {search.length != 0 && filteredPeople.map(p => {
                         return (<div key={p.uid} className="h-5 ml-2 d-flex align-items-center">
                             <img className="side-img" src={p.photoURL}></img>
@@ -30,6 +35,8 @@ function Sidebar() {
 
                         </div>)
                     })}
+
+                    {/*show all the friend since search input in empty*/}
                     {!search.length && people.map(p => {
                         return (<div key={p.uid} className="h-5 ml-2 d-flex align-items-center">
                             <img className="side-img" src={p.photoURL}></img>

@@ -1,6 +1,8 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
+
+//firebase config
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyC63KfcBgPvhM5SkhKKbH8Zmk2VvCMbPoQ",
     authDomain: "chatapp-995b1.firebaseapp.com",
